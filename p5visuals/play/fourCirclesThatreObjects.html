@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
+		<script src="../../libs/p5/p5.min.js"></script>
+		<script type="text/javascript">
+			
+			var circle01;
+			var circle02;
+			var circle03;
+			var circle04;
+
+			function setup() {
+				createCanvas(400,400);
+
+				var centerWidth = width/2;
+				var centerHeight = height/2;
+				var spacing = width / 5;
+				var evenSpacing = 40;
+
+				//circle01 = new googleCircle(spacing, centerHeight, '#4285F4')//, PI/2); blue
+				circle01 = new googleCircle(centerWidth - (evenSpacing/2 + evenSpacing), centerHeight, '#4285F4')//, PI/2); blue
+
+				circle02 = new googleCircle(centerWidth - evenSpacing/2, centerHeight, '#EA4335')//, PI/2); red
+
+				circle03 = new googleCircle(centerWidth + evenSpacing/2, centerHeight, '#FBBC04')//, PI/2);
+				
+				circle04 = new googleCircle(centerWidth + (evenSpacing/2 + evenSpacing), centerHeight, '#34A853')//, PI/2);
+			}
+
+			function draw() {
+				background(200);
+
+				circle01.update();
+				circle01.display();
+				
+				circle02.update();
+				circle02.display();
+
+				circle03.update();
+				circle03.display();
+				
+				circle04.update();
+				circle04.display();
+			}
+
+			function googleCircle(XX, YY, circleFill) {
+				this.x = XX;
+				this.y = YY;
+				this.fill = circleFill;
+				this.diameter = 25;
+				//this.angle = 0;
+
+				this.update = function() {
+
+					//this.d1 = 15 + (sin(this.angle + this.startingCircleSize) * this.diameter/2) + this.diameter/2;
+					
+					//this.angle = this.angle + 0.05;
+					//console.log(this.d1);
+
+					// add movement here
+					//this.x = 
+					//this.y =
+
+				}
+
+				this.display = function() {
+					noStroke();
+					fill(this.fill);
+
+					ellipse(this.x, this.y, this.diameter);
+				}
+			}
+
+		</script>
+	</body>
+</html>

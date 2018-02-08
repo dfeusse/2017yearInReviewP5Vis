@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
+		<script src="../../libs/p5/p5.min.js"></script>
+		<script type="text/javascript">
+			
+		var circle01;
+		var circle02;
+		var circle03;
+		var circle04;
+
+		function setup() {
+			createCanvas(400,400);
+
+			var centerWidth = width/2;
+			var centerHeight = height/2;
+			var spacing = width / 5;
+			var evenSpacing = 40;
+
+			//circle01 = new googleCircle(spacing, centerHeight, '#4285F4')//, PI/2); blue
+			circle01 = new googleCircle(centerWidth - (evenSpacing/2 + evenSpacing), '#4285F4')//, PI/2); blue
+
+			circle02 = new googleCircle(centerWidth - evenSpacing/2, '#EA4335')//, PI/2); red
+
+			circle03 = new googleCircle(centerWidth + evenSpacing/2, '#FBBC04')//, PI/2);
+			
+			circle04 = new googleCircle(centerWidth + (evenSpacing/2 + evenSpacing), '#34A853')//, PI/2);
+
+			circle01.display();
+			circle02.display();
+			circle03.display();
+			circle04.display();
+		}
+
+		function draw() {
+			background(200);
+
+			//circle01.display();
+			//circle02.display();
+			//circle03.display();
+			//circle04.display();
+
+			var waveLag = 5;
+
+			circle01.wave();
+			circle01.display();
+
+			if (frameCount > waveLag) {
+				circle02.wave();
+			}
+			if (frameCount > waveLag*2) {
+				circle03.wave();
+			}
+			if (frameCount > waveLag*3) {
+				circle04.wave();
+			}
+			
+			if (keyIsDown(DOWN_ARROW)) {
+			    //y += 5;
+			    console.log('down arrow')
+			    circle01.wave();
+			    circle02.wave();
+			    circle03.wave();
+			    circle0.wave();
+			  }
+
+		}
+
+		function googleCircle(XX, circleFill) {
+			this.diameter = 25;
+			this.x = XX;
+			//this.y = YY;
+			this.y = this.diameter/2;
+			this.fill = circleFill;
+			
+
+			this.angle = 0;
+			this.startingCirclePosition = 20;
+			this.waveheight = 10;
+
+			this.wave = function() {
+				noStroke();
+				fill(this.fill);
+
+				this.y = this.diameter/2 + (sin(this.angle + this.startingCirclePosition) * this.waveheight/2) + this.waveheight/2;
+				//console.log(this.y)
+				ellipse(this.x, this.y, this.diameter);
+				this.angle = this.angle + 0.07;
+			}
+
+			this.display = function() {
+				//noStroke();
+				//fill(this.fill);
+
+				ellipse(this.x, this.y, this.diameter);
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		function keyPressed() {
+			if (key === '1') {
+				console.log('pressed: 1');
+				circle01.wave();
+				circle02.wave();
+				circle03.wave();
+				circle04.wave();
+
+			} else if (key === '2') {
+				console.log('pressed: 2')
+			} else if (keyIsDown(LEFT_ARROW)) {
+				console.log('pressed: left arrow')
+			}
+		}	
+
+
+			function keyTyped() {
+				if (key === 'a') {
+					console.log('pressed: 222')
+				}
+			}
+
+		</script>
+	</body>
+</html>
