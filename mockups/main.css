@@ -1,0 +1,59 @@
+.header {
+	top: 0px;
+    transition: top 0s ease 0s;
+    /* height: auto; */
+    height: 70px;
+    min-height: 65px;
+	background-color: #fff;
+	box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+	box-sizing: content-box;
+	min-height: 50px;
+	position: relative;
+	z-index: 100;
+
+	padding-left: 2%;
+}
+.header .product-logo {
+    height: 27px;
+    max-width: 80px;
+    min-width: 80px;
+    width: 80px;
+}
+.navbar {
+	height: 100%;
+}
+svg.svg-icon {
+	margin-bottom: 7px;
+	}
+#navbarNav {
+	padding-left: 4em;
+}
+#intro-content {
+	/* padding-left: 32px; */
+    padding-bottom: 10px;
+    padding-top: 150px;
+}
+.product-hero-heading {
+	color: #25272b;
+	font-family: Roboto,Arial,Helvetica,sans-serif;	
+	font-size: 2.75rem;
+    font-weight: 300;
+    letter-spacing: -.8px;
+    line-height: 3.125rem;
+}
+.product-hearing-subheading {
+	    -webkit-font-smoothing: antialiased;
+    color: #25272b;
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+        font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.625rem;
+}
+#intro-header-logo {
+
+}
+#intro-vis {
+    margin-top: 30px;
+    margin-left: 13px;
+}
