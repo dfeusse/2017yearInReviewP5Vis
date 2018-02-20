@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
+		<script src="../../libs/p5/p5.min.js"></script>
+		<script type="text/javascript">
+			
+		var move;
+
+		function setup() {
+			createCanvas(400, 400);
+
+			var centerWidth = width/2;
+			var evenSpacing = 40;
+
+			var googleBlue = '#4285F4';
+			var googleRed = '#EA4335';
+			var googleYellow = '#FBBC04';
+			var googleGreen = '#34A853';
+
+			circleBlue = new GoogleCircle(1, centerWidth - (evenSpacing/2 + evenSpacing), 40, googleBlue);
+			circleRed = new GoogleCircle(1, centerWidth - evenSpacing/2, 40, googleRed);
+			circleYellow = new GoogleCircle(1, centerWidth + evenSpacing/2, 40, googleYellow);
+			circleGreen = new GoogleCircle(1, centerWidth + (evenSpacing/2 + evenSpacing), 40, googleGreen);
+		}
+
+		function draw() {
+			background(200);
+
+			circleBlue.accToMouse();
+			circleBlue.update();
+			circleBlue.display();
+
+			circleRed.accToMouse();
+			circleRed.update();
+			circleRed.display();
+
+			circleYellow.accToMouse();
+			circleYellow.update();
+			circleYellow.display();
+
+			circleGreen.accToMouse();
+			circleGreen.update();
+			circleGreen.display();
+		}
+
+
+
+		var GoogleCircle = function(m, x, y, circleFill) {
+			this.mass = m;
+			this.position = createVector(x, y);
+			this.velocity = createVector(0, 0);
+			this.acceleration = createVector(0, 0);
+
+			//this.mouse = createVector(mouseX, mouseY);
+
+			this.accToMouse = function() {
+
+				//this.mouse = createVector(mouseX, mouseY);
+				this.mouse = createVector(mouseX + random(-5,5), mouseY + random(-5,5));
+				this.mouse.sub(this.position);
+				this.mouse.setMag(0.5);
+				this.acceleration = this.mouse;
+			}
+
+			this.update = function() {
+				this.velocity.add(this.acceleration);
+				this.position.add(this.velocity);
+				//this.acceleration.mult(0);
+				this.velocity.limit(5);
+			}
+
+			this.display = function() {
+				noStroke();
+				fill(circleFill);
+				ellipse(this.position.x, this.position.y, m * 20, m * 20);
+			}
+
+			
+		}// end of Mover class
+
+		</script>
+	</body>
+</html>

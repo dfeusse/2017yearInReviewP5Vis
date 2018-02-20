@@ -98,6 +98,10 @@ function GoogleCircle(XX, circleFill, m) {
 	this.velocity = createVector(0, 0);
 	this.acceleration = createVector(0, 0);
 	
+	// balls fly after screen after getting to the mouse
+
+	// balls follow mouse after they drop
+
 	// balls drop in cool way
 	this.applyForce = function(force) {
 		var f = p5.Vector.div(force, this.mass);
