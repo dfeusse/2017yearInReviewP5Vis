@@ -79,12 +79,20 @@ function draw() {
 		circle04.checkEdges();
 	}
 
-	if (millis() > 11000) {
+	if (millis() > 11000 && millis() < 13000)  {
 		console.log('balls should accelerate towards mouse');
 		circle01.accToMouse();
 		circle02.accToMouse();
 		circle03.accToMouse();
 		circle04.accToMouse();
+	}
+
+	if (millis() > 13000)  {
+		console.log('balls should fly off screen');
+		circle01.flyOffScreen();
+		circle02.flyOffScreen();
+		circle03.flyOffScreen();
+		circle04.flyOffScreen();
 	}
 
 }
@@ -107,6 +115,23 @@ function GoogleCircle(XX, circleFill, m) {
 	this.acceleration = createVector(0, 0);
 	
 	// balls fly after screen after getting to the mouse
+	this.flyOffScreen = function() {
+		this.velocity.add(this.acceleration);
+		this.position.add(this.velocity);
+
+		// generate random vector
+		var min = 0.-04;
+       	var max = 0.04;
+       	var randomNumber = Math.random() * (max - min) + min;
+		var randomVector = (randomNumber, randomNumber)
+
+		var wind = createVector(0.01, 0);
+		var gravity = createVector(0, 0.03);
+		this.applyForce(wind);
+		this.applyForce(gravity);
+		//this.applyForce(randomVector);
+	}
+
 
 	// balls follow mouse after they drop
 	this.accToMouse = function() {
