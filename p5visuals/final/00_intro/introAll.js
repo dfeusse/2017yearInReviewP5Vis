@@ -60,8 +60,8 @@ function draw() {
 
 	// balls drop to the floor animation
 	//if (millis() > waveTimer + circleLag * 3 + ballDropTimer) {
-	if (millis() > 6000) {
-		console.log('balls hsould drop')
+	if (millis() > 6000 && millis() < 11000) {
+		console.log('balls should drop')
 		natureElements(circle01, 0.01, 0, 0, 0.1, 0.03);
 		circle01.bouncingUpdate();
 		circle01.checkEdges();
@@ -77,6 +77,14 @@ function draw() {
 		natureElements(circle04, -0.03, 0.01, 0, 0.1, 0.03);
 		circle04.bouncingUpdate();
 		circle04.checkEdges();
+	}
+
+	if (millis() > 11000) {
+		console.log('balls should accelerate towards mouse');
+		circle01.accToMouse();
+		circle02.accToMouse();
+		circle03.accToMouse();
+		circle04.accToMouse();
 	}
 
 }
@@ -101,6 +109,16 @@ function GoogleCircle(XX, circleFill, m) {
 	// balls fly after screen after getting to the mouse
 
 	// balls follow mouse after they drop
+	this.accToMouse = function() {
+		this.mouse = createVector(mouseX + random(-5,5), mouseY + random(-5,5));
+		this.mouse.sub(this.position);
+		this.mouse.setMag(0.5);
+		this.acceleration = this.mouse;
+
+		this.velocity.add(this.acceleration);
+		this.position.add(this.velocity);
+		this.velocity.limit(5);
+	}
 
 	// balls drop in cool way
 	this.applyForce = function(force) {
