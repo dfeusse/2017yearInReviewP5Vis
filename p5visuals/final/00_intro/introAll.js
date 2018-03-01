@@ -1,4 +1,4 @@
-console.log('introALl.js called');
+console.log('introALl Kournikova.js called');
 
 var circle01;
 var circle02;
@@ -14,11 +14,24 @@ var ballDropTimer = 2000;
 
 function setup() {
 	//var cnv = createCanvas(400,400);
-	var cnv = createCanvas(windowWidth, 300);
+	var cnv = createCanvas(windowWidth, 500);
 	cnv.parent("intro-vis")
 
 	var centerWidth = width/2;
 	var centerHeight = height/2;
+
+	imgGoogleG = createImg("../../assets/GoogleG_FullColor/png/iOS/1x/logo_GoogleG_FullColor_1x_176px.png");
+	imgGoogleG.class("intro-header-logo");
+	imgGoogleG.position(width / 2 - 500, height / 2);
+	
+	textMainHeader = createP("2017 Media Lab <br> Year in Review");
+	textMainHeader.class("product-hero-heading");
+	textMainHeader.position(width / 2 - 200, height / 2);
+
+	textSubHeader = createP("Media Lab Operations By THUNDER");
+	textSubHeader.class("product-hearing-subheading");
+	textSubHeader.position(width / 2 - 200, height / 2 + 120);
+	
 	var evenSpacing = 40;
 
 	var googleBlue = '#4285F4';
