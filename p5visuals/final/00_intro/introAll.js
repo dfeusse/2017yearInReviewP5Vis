@@ -14,13 +14,16 @@ var ballDropTimer = 2000;
 
 function setup() {
 	//var cnv = createCanvas(400,400);
-	var cnv = createCanvas(windowWidth, 500);
+	//var cnv = createCanvas(windowWidth, 500);
+	var cnv = createCanvas(windowWidth, windowHeight);
 	cnv.parent("intro-vis")
 
 	var centerWidth = width/2;
 	var centerHeight = height/2;
 
-	imgGoogleG = createImg("../../assets/GoogleG_FullColor/png/iOS/1x/logo_GoogleG_FullColor_1x_176px.png");
+	//imgGoogleG = createImg("../../assets/GoogleG_FullColor/png/iOS/1x/logo_GoogleG_FullColor_1x_176px.png");
+	//imgGoogleG = createImg("../../assets/Google__G__Logo.svg");
+	imgGoogleG = createImg("../../assets/GoogleG_FullColor/svg/logo_GoogleG_FullColor_176px.svg");
 	imgGoogleG.class("intro-header-logo");
 	imgGoogleG.position(width / 2 - 500, height / 2);
 	
@@ -28,7 +31,7 @@ function setup() {
 	textMainHeader.class("product-hero-heading");
 	textMainHeader.position(width / 2 - 200, height / 2);
 
-	textSubHeader = createP("Media Lab Operations By THUNDER");
+	textSubHeader = createP("Media Lab Operations by Thunder");
 	textSubHeader.class("product-hearing-subheading");
 	textSubHeader.position(width / 2 - 200, height / 2 + 120);
 	
@@ -47,7 +50,7 @@ function setup() {
 }
 
 function draw() {
-	background(255);
+	background(200);
 
 	// circles appear
 	if (millis() > appearTimer) {
@@ -55,6 +58,11 @@ function draw() {
 		circle02.appear();
 		circle03.appear();
 		circle04.appear();
+	}
+
+	// logo fade
+	if (millis() > 1500) {
+		$(".intro-header-logo").fadeOut(2000);
 	}
 
 	// waves logo animation
@@ -108,6 +116,10 @@ function draw() {
 		circle04.flyOffScreen();
 	}
 
+} // end of draw()
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
 }
 
 function GoogleCircle(XX, circleFill, m) {

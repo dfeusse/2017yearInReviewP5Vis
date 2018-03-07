@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css">
+			.texty {
+				color:red;
+			}
+			.moreText {
+				color: purple;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
+		<script src="../../libs/p5/p5.min.js"></script>
+		<script src="../../libs/p5/addons/p5.dom.min.js"></script>
+		
+		<div id="intro-vis"></div>
+
+		<script type="text/javascript">
+			
+			var header,
+				font;
+
+			function preload() {
+  				//font = loadFont('assets/SourceSansPro-Regular.otf');
+			}
+
+			function setup() {
+				var cnv = createCanvas(windowWidth, windowHeight);
+				cnv.parent("intro-vis")
+
+				var centerWidth = width/2;
+				var centerHeight = height/2;
+
+				// set up the font
+  				//textFont(font);
+  				//textSize(fontsize);
+  				//textP = createP("This is an HTML string with style!");
+  				//textP.class("texty");
+
+				text = createP("This is an HTML string with style!");
+				text.position(50, 50);
+				text.class("moreText");
+			}
+
+			function draw() {
+				//header.update();
+				background(200);
+			}
+
+			function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+		
+
+		</script>
+	</body>
+</html>

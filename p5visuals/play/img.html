@@ -13,16 +13,30 @@
 				width: 400px;
 				height: auto;
 			}
+			/*
+			@keyframes hideShow {
+    0%{opacity:1}
+    50%{opacity:0.5}
+    100%{opacity:0}
+}
+img.imgFade {
+    height:110px;
+    animation: hideShow 3s ease;
+}
+*/
 		</style>
 	</head>
 	<body>
+		<img src="../../assets/Google__G__Logo.svg" class="imgFade">
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
 		<script src="../../libs/p5/p5.min.js"></script>
 		<script src="../../libs/p5/addons/p5.dom.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			
 			var header,
-				font;
+				font, 
+				img;
 
 			function preload() {
   				//font = loadFont('assets/SourceSansPro-Regular.otf');
@@ -41,6 +55,10 @@
 
 			function draw() {
 				//header.update();
+				if (millis() > 1000) {
+					console.log('heya emma')
+					$(".imgFade").fadeOut(1000)
+				}
 			}
 
 			function Img(message, X, Y, textFill) {

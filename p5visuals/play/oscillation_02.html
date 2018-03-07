@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<script src="../../libs/p5/p5.min.js"></script>
+		<script type="text/javascript">
+			
+		var circle01;
+			var circle02;
+			var circle03;
+			var circle04;
+			var centerHeight
+
+			function setup() {
+				createCanvas(400,400);
+
+				var centerWidth = width/2;
+				var spacing = width / 5;
+				var evenSpacing = 40;
+
+				//circle01 = new googleCircle(spacing, centerHeight, '#4285F4')//, PI/2); blue
+				circle01 = new googleCircle(centerWidth - (evenSpacing/2 + evenSpacing), '#4285F4')//, PI/2); blue
+
+				circle02 = new googleCircle(centerWidth - evenSpacing/2, '#EA4335')//, PI/2); red
+
+				circle03 = new googleCircle(centerWidth + evenSpacing/2, '#FBBC04')//, PI/2);
+				
+				circle04 = new googleCircle(centerWidth + (evenSpacing/2 + evenSpacing), '#34A853')//, PI/2);
+			}
+
+			function draw() {
+				background(200);
+
+				circle01.display();				
+				circle02.display();
+				circle03.display();
+				circle04.display();
+
+				if (millis() > 1000) {
+					circle01.update();
+				}
+				if (millis() > 1200) {
+					circle02.update();
+				}
+				if (millis() > 1400) {
+					circle03.update();
+				}
+				if (millis() > 1600) {
+					circle04.update();
+				}
+				
+			}
+
+			function googleCircle(XX, circleFill) {
+				this.x = XX;
+				this.y = 0;
+				this.fill = circleFill;
+				this.diameter = 25;
+				
+				// speed
+				this.angle = 0;
+				this.aVelocity = 0.02;
+				// height of wave
+				this.amplitude = 100;
+
+				this.update = function() {
+
+					//this.d1 = 15 + (sin(this.angle + this.startingCircleSize) * this.diameter/2) + this.diameter/2;
+					
+					//this.angle = this.angle + 0.05;
+					//console.log(this.d1);
+
+					// add movement here
+					this.y = this.amplitude * sin(this.angle);
+					this.angle += this.aVelocity;
+
+				}
+
+				this.display = function() {
+					noStroke();
+					
+					push();
+					translate(this.x, this.y + (height/2));
+					fill(this.fill);
+					ellipse(0, 0, this.diameter);
+					pop();
+				}
+			}
+
+		</script>
+	</body>
+</html>
