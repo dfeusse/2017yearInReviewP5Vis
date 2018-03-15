@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<script src="../../../libs/p5/p5.min.js"></script>
+		<script type="text/javascript">
+			
+var radius = 150;
+var angle = 0;
+var speed = 0.03;
+var centerX = 300;
+var centerY = 300;
+
+function setup() { 
+  createCanvas(600, 600);
+  rectMode(CENTER);
+}
+
+function draw() { 
+  background(220);
+  
+  text(angle, 50, 50);
+  
+  translate(centerX, centerY);
+  rotate (angle);
+  rect(radius, 0, 50, 50);
+	line(0, 0, radius, 0);
+  
+  angle = angle + speed;
+  
+  if (angle >= PI) {
+    speed = -0.03;
+  } else if (angle <= 0) {
+    speed = 0.03;
+  }
+  
+  // another way to say the above...
+  // if (angle >= PI  ||  angle <= 0) {
+  //  speed *= -1;
+  // }
+}
+
+		</script>
+	</body>
+</html>
