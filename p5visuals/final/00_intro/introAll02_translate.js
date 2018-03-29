@@ -1,4 +1,4 @@
-console.log('intro 02 called called translate');
+console.log('intro 02 calledyyyy translate');
 
 var circle01;
 var circle02;
@@ -169,7 +169,8 @@ function GoogleCircle(XX, circleFill, m) {
 
 
 	// balls follow mouse after they drop
-	this.accToMouse = function() {
+	this.accToMouse = function() {		
+
 		this.mouse = createVector(mouseX + random(-5,5), mouseY + random(-5,5));
 		this.mouse.sub(this.position);
 		this.mouse.setMag(0.5);
@@ -178,6 +179,7 @@ function GoogleCircle(XX, circleFill, m) {
 		this.velocity.add(this.acceleration);
 		this.position.add(this.velocity);
 		this.velocity.limit(5);
+
 	}
 
 	// balls drop in cool way
@@ -230,7 +232,12 @@ function GoogleCircle(XX, circleFill, m) {
 		
 		noStroke();
 		fill(this.fill);
-		ellipse(this.position.x + this.adjustX, this.position.y + this.adjustY, this.diameter);
+
+		//push();
+		//translate(this.adjustX, this.adjustY);
+		//ellipse(this.position.x + this.adjustX, this.position.y + this.adjustY, this.diameter);
+		ellipse(this.position.x, this.position.y, this.diameter);
+		//pop();
 	}
 
 } // end of GoogleCircle
