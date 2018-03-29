@@ -1,4 +1,4 @@
-console.log('intro 02 calledyyyy translate');
+console.log('intro 02 called translateyyyyy');
 
 var circle01;
 var circle02;
@@ -171,7 +171,8 @@ function GoogleCircle(XX, circleFill, m) {
 	// balls follow mouse after they drop
 	this.accToMouse = function() {		
 
-		this.mouse = createVector(mouseX + random(-5,5), mouseY + random(-5,5));
+		//this.mouse = createVector(mouseX + random(-5,5), mouseY + random(-5,5));
+		this.mouse = createVector(mouseX + random(-5,5) - this.adjustX, mouseY + random(-5,5) - this.adjustY);
 		this.mouse.sub(this.position);
 		this.mouse.setMag(0.5);
 		this.acceleration = this.mouse;
@@ -193,6 +194,21 @@ function GoogleCircle(XX, circleFill, m) {
 		this.acceleration.mult(0);
 	}
 	this.checkEdges = function() {
+		// need to adjust for the transform
+		if (this.position.x > (width)) {
+			this.position.x = (width);
+			this.velocity.x *= -1;
+		} else if (this.position.x < (0 - this.adjustX)) {
+			this.velocity.x *= -1;
+			this.position.x = (0 - this.adjustX);
+		}
+
+		if (this.position.y > (height - this.adjustY)) {
+			this.velocity.y *= -1;
+			//this.position.y = height;
+			this.position.y = (height - this.adjustY) - (m * 10 / 2);
+		}
+		/*
 		if (this.position.x > width) {
 			this.position.x = width;
 			this.velocity.x *= -1;
@@ -206,6 +222,7 @@ function GoogleCircle(XX, circleFill, m) {
 			//this.position.y = height;
 			this.position.y = height - (m * 10 / 2);
 		}
+		*/
 	}
 
 	//  wavey animation 
@@ -233,11 +250,11 @@ function GoogleCircle(XX, circleFill, m) {
 		noStroke();
 		fill(this.fill);
 
-		//push();
-		//translate(this.adjustX, this.adjustY);
+		push();
+		translate(this.adjustX, this.adjustY);
 		//ellipse(this.position.x + this.adjustX, this.position.y + this.adjustY, this.diameter);
 		ellipse(this.position.x, this.position.y, this.diameter);
-		//pop();
+		pop();
 	}
 
 } // end of GoogleCircle
